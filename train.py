@@ -53,12 +53,12 @@ normalize = T.Compose([
 	T.Lambda(lambda x: x[[2, 1, 0], ...])
 ])
 
-dataset_train = opts.dataset(opts.data, train = True, transform = transforms.Compose([
+dataset_train = opts.dataset(opts.data, train = True, transform = T.Compose([
 	T.RandomSizedCrop(base_model.input_side),
 	T.RandomHorizontalFlip(),
 	normalize
 ]), download = True)
-dataset_eval = opts.dataset(opts.data, train = False, transform = transforms.Compose([
+dataset_eval = opts.dataset(opts.data, train = False, transform = T.Compose([
 	T.Scale(256),
 	T.CenterCrop(base_model.input_side),
 	normalize
